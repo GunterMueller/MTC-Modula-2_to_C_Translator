@@ -32,10 +32,10 @@ $(LIB)/makemake:	$(LIB)
 
 bin.conv:	convert
 	dd conv=swab < Scanner.Tab > .Scanner.Tab; mv .Scanner.Tab Scanner.Tab
-	dd conv=swab < Parser.Tab | convert > .Parser.Tab; mv .Parser.Tab Parser.Tab
+	dd conv=swab < Parser.Tab | ./mtcconvert > .Parser.Tab; mv .Parser.Tab Parser.Tab
 
 convert:	convert.o
-	cc -o convert convert.o
+	cc -o mtcconvert convert.o
 
 Scanner.md Scanner.mi:	modula.rex
 	rex -d modula.rex;
@@ -69,7 +69,7 @@ cleanId:
 	rm -f modId*
 
 clean:	cleanId
-	rm -f *.[dimor] core ERRORS LISTING convert *.bak
+	rm -f *.[dimor] core ERRORS LISTING mtcconvert *.bak
 
 CLEAN:	clean
 	rm -f [A-Z]*.[hc] Parser.m? Scanner.m? GetImports Scanner.Tab Parser.Tab
