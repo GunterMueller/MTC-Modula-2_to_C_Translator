@@ -46,10 +46,10 @@ $(LIB)/mtc:	$(LIB)
 
 bin.conv:	convert
 	dd conv=swab < Scanner.Tab > .Scanner.Tab; mv .Scanner.Tab Scanner.Tab
-	dd conv=swab < Parser.Tab | convert > .Parser.Tab; mv .Parser.Tab Parser.Tab
+	dd conv=swab < Parser.Tab | mtcconvert > .Parser.Tab; mv .Parser.Tab Parser.Tab
 
 convert:	convert.c
-	$(CC) -o convert convert.c
+	$(CC) -o mtcconvert convert.c
 
 
 # HEAD
@@ -295,7 +295,7 @@ mtc	: $(SYSTEM)	\
 # TAIL
 
 clean	:
-	rm -f core *.o convert
+	rm -f core *.o mtcconvert
 
 .SUFFIXES: .md .mi .h .c .o
 
