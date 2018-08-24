@@ -1,7 +1,7 @@
 BIN	= $(HOME)/bin
 LIB	= $(HOME)/lib
 OPT	= -g
-CC	= cc
+CC	= cc -m32
 
                 # C library (reuse)
 REUSE	= ../../reuse/m2c
@@ -46,10 +46,10 @@ $(LIB)/mtc:	$(LIB)
 
 bin.conv:	convert
 	dd conv=swab < Scanner.Tab > .Scanner.Tab; mv .Scanner.Tab Scanner.Tab
-	dd conv=swab < Parser.Tab | mtcconvert > .Parser.Tab; mv .Parser.Tab Parser.Tab
+	dd conv=swab < Parser.Tab | convert > .Parser.Tab; mv .Parser.Tab Parser.Tab
 
 convert:	convert.c
-	$(CC) -o mtcconvert convert.c
+	$(CC) -o convert convert.c
 
 
 # HEAD
@@ -295,7 +295,7 @@ mtc	: $(SYSTEM)	\
 # TAIL
 
 clean	:
-	rm -f core *.o mtcconvert
+	rm -f core *.o convert
 
 .SUFFIXES: .md .mi .h .c .o
 

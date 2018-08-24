@@ -9,8 +9,8 @@ all :
 		make -C $(SRC)/mtc/make  bin.conv;\
 		touch swapped; else true; fi"
 	make -C $(SRC)/reuse/m2c
-	make -C $(SRC)/mtc/m2c    TARGET=SUN BIN=/usr/local/bin LIB=$(INST)
-	make -C $(SRC)/mtc/make  -f MakefileC GetImports BIN=/usr/local/bin LIB=$(INST)
+	make -C $(SRC)/mtc/m2c    TARGET=SUN BIN=/usr/bin LIB=$(INST)
+	make -C $(SRC)/mtc/make  -f MakefileC GetImports BIN=/usr/bin LIB=$(INST)
 
 
 install:

@@ -1,7 +1,7 @@
 BIN	= $(HOME)/bin
 LIB	= $(HOME)/lib
 OPT	= -O
-CC	= cc
+CC	= cc -m32
 
                 # C library (reuse)
 REUSE	= ../../reuse/m2c
@@ -42,7 +42,7 @@ $(LIB)/makemake:	$(LIB)
 
 bin.conv:	convert
 	dd conv=swab < Scanner.Tab > .Scanner.Tab; mv .Scanner.Tab Scanner.Tab
-	dd conv=swab < Parser.Tab | convert > .Parser.Tab; mv .Parser.Tab Parser.Tab
+	dd conv=swab < Parser.Tab | ./convert > .Parser.Tab; mv .Parser.Tab Parser.Tab
 
 convert:	convert.o
 	$(CC) -o convert convert.o

@@ -1,7 +1,7 @@
 OPT	= -O
 UNIX	= UNIX
 CFLAGS	= $(OPT) -D$(UNIX)
-CC	= cc
+CC	= cc -m32
 M2FLAGS	= -c -d/usr/local/lib/mocka/lib
 SYSTEM	= System.o
 
@@ -13,8 +13,7 @@ CLIBS	= Arguments.o SYSTEM_.o
 
 
 libreuse.a	: $(OBJS)
-	#ar uc libreuse.a $(OBJS)
-	ar r libreuse.a $(OBJS)
+	ar rcf libreuse.a $(OBJS)
 	ranlib libreuse.a
 
 

@@ -5,7 +5,7 @@ REUSE	= libreuse.a
 OPT	= -O
 UNIX	= UNIX
 CFLAGS	= $(OPT) -D$(UNIX) -D$(TARGET)
-CC	= cc
+CC	= cc -m32
 OBJS	= System.o General.o Memory.o DynArray.o StringMem.o Idents.o Sets.o Time.o \
 	  Errors.o Positions.o Source.o
 
